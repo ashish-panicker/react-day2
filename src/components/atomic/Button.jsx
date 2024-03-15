@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 
-const Button = ({ text, clickHandler }) => {
+const Button = ({ disabled, clickHandler, children }) => {
   return (
-    <button type="button" className="button" onClick={clickHandler}>
-      {text}
+    <button type="button" className="button" onClick={clickHandler} disabled={disabled}>
+      {children}
     </button>
   )
 }
@@ -11,6 +11,7 @@ const Button = ({ text, clickHandler }) => {
 export default Button
 
 Button.propTypes = {
-  text: PropTypes.string.isRequired,
+  children: PropTypes.node,
   clickHandler: PropTypes.func.isRequired,
+  disabled: PropTypes.bool
 }
