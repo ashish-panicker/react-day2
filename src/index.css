@@ -130,10 +130,17 @@ body {
     margin: 12px 0;
 }
 
+.row {
+    margin-bottom: 6px;
+}
+
 .row>label {
     display: block;
     font-size: 1.1rem;
-    margin-bottom: 6px;
+}
+
+.row>span{
+    margin-right: 12px;
 }
 
 .row>.input {
@@ -142,4 +149,7 @@ body {
     font-size: 1.25rem;
     border-radius: 8px;
     margin-bottom: 6px;
+}
+.radio{
+    margin-right: 8px;
 }

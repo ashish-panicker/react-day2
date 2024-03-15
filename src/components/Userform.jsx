@@ -1,16 +1,21 @@
 import React from 'react'
 
 const UserForm = () => {
-
   const [userFormData, setUserFormData] = React.useState({
     userName: '',
     password: '',
     email: '',
+    gender: '',
+    discount: false,
+    promotion: false,
   })
 
   const formValueChanged = (e) => {
-    const { name, value } = e.target
-    setUserFormData({ ...userFormData, [name]: value })
+    const { name, value, type, checked } = e.target
+    setUserFormData({
+      ...userFormData,
+      [name]: type === 'checkbox' ? checked : value,
+    })
   }
 
   const saveUser = () => {
@@ -28,7 +33,7 @@ const UserForm = () => {
             name="userName"
             id="userName"
             className="input"
-            onChange={formValueChanged}   // to the state
+            onChange={formValueChanged} // to the state
             value={userFormData.userName} // from the state
           />
         </div>
@@ -53,6 +58,48 @@ const UserForm = () => {
             onChange={formValueChanged}
             value={userFormData.password}
           />
+        </div>
+        <div className="row">
+          <label htmlFor="gender">Gender</label>
+          <span>Male</span>
+          <input
+            className="radio"
+            type="radio"
+            name="gender"
+            value="Male"
+            onChange={formValueChanged}
+            checked={userFormData.gender === 'Male'}
+          />
+          <span>Female</span>
+          <input
+            className="radio"
+            type="radio"
+            name="gender"
+            value="Female"
+            onChange={formValueChanged}
+            checked={userFormData.gender === 'Female'}
+          />
+        </div>
+        <div className="row">
+          <label htmlFor="preferences">Options</label>
+          <input
+            type="checkbox"
+            name="promotion"
+            className="radio"
+            value="yes"
+            onChange={formValueChanged}
+            checked={userFormData.promotion}
+          />
+          <span>Promotions</span>
+          <input
+            type="checkbox"
+            name="discount"
+            className="radio"
+            value="yes"
+            onChange={formValueChanged}
+            checked={userFormData.discount}
+          />
+          <span>Discounts</span>
         </div>
         <button type="button" className="button" onClick={saveUser}>
           Save
